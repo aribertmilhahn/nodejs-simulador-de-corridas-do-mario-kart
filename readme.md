@@ -2,7 +2,7 @@
 
 Esse projeto é a entrega do desafio "Simulador de Corridas do Mario Kart com Node.js" na **[Digital Innovation One](dio.me)**.
 
-Toda a base do projeto foi desenvolvida de um projeto educacional da Digital Innovation One. **[Repositório original](https://github.com/digitalinnovationone/jsgame-detona-ralph)**
+Toda a base do projeto foi desenvolvida de um projeto educacional da Digital Innovation One. **[Repositório original](https://github.com/digitalinnovationone/formacao-nodejs/tree/main/03-projeto-mario-kart)**
 
 <h1>Desafio de projeto do Felipão: Mario Kart.JS</h1>
 
