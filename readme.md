@@ -113,7 +113,7 @@ Toda a base do projeto foi desenvolvida de um projeto educacional da Digital Inn
 <b>Regras extras do confronto:</b>
 
 <input type="checkbox" id="extra-1-item" />
-<label for="extra-1-item">Sortear aleatoriamente se é um casco(-1 ponto) ou um bomba(-2 pontos)</label>
+<label for="extra-1-item">Sortear aleatoriamente se é um casco(-1 ponto) ou um bomba(-2 pontos)</label><br>
 
 <input type="checkbox" id="extra-2-item" />
 <label for="extra-2-item">Quem vence o confronto ganha um turbo (+1 ponto) aleatoriamente</label>
