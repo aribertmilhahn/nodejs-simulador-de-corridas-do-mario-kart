@@ -45,6 +45,29 @@ async function logRollDiceResult(characterName, block, diceResult, attribute) {
     );
 };
 
+async function getDamageResult() {
+    if (await rollDice() > 3) {
+        return { 
+            item: '💣',
+            damage: 2
+        };
+    } else {
+        return { 
+            item: '🐢',
+            damage: 1
+        };
+    }
+}
+
+async function getTurbo(characterName) {
+    if (await rollDice() > 4) {
+        console.log(`${characterName} ganhou um turbo ⚡`);
+        return 1;
+    } else {
+        return 0;
+    }
+}
+
 async function playRaceEngine(character1, character2) {
     for (let round = 1; round <= 5; round++) {
         console.log(`🏁 Rodada ${round}`);
@@ -70,7 +93,8 @@ async function playRaceEngine(character1, character2) {
 
             logRollDiceResult(character1.name, 'handling', diceResult1, character1.handling);
             logRollDiceResult(character2.name, 'handling', diceResult2, character2.handling);
-        } else if (block === 'CONFRONTO') {
+        }
+         else if (block === 'CONFRONTO') {
             let powerResult1 = diceResult1 + character1.power;
             let powerResult2 = diceResult2 + character2.power;
 
@@ -79,16 +103,19 @@ async function playRaceEngine(character1, character2) {
             logRollDiceResult(character1.name, 'power', diceResult1, character1.power);
             logRollDiceResult(character2.name, 'power', diceResult2, character2.power);
 
+            let damageResult = await getDamageResult();
+
             if (powerResult1 > powerResult2 && character2.score > 0) {
-                console.log(`${character1.name} venceu o confronto! ${character2.name} perdeu um ponto 🐢`);
-                character2.score--;
-            }
-            if (powerResult2 > powerResult1 && character1.score > 0) {
-                console.log(`${character2.name} venceu o confronto! ${character1.name} perdeu um ponto 🐢`);
-                character1.score--;
-            }
-            
-            console.log(powerResult1 === powerResult2 ? 'Confronto empatado! Nenhum ponto foi perdido!' : '');
+                console.log(`${character1.name} venceu o confronto! ${character2.name} perdeu ${damageResult.damage} ponto ${damageResult.item}`);
+                character2.score = character2.score - damageResult.damage < 0 ? 0 : character2.score - damageResult.damage;
+                character1.score += await getTurbo(character1.name);
+            } else if (powerResult2 > powerResult1 && character1.score > 0) {
+                console.log(`${character2.name} venceu o confronto! ${character1.name} perdeu ${damageResult.damage} ponto ${damageResult.item}`);
+                character1.score = character1.score - damageResult.damage < 0 ? 0 : character1.score - damageResult.damage;
+                character2.score += await getTurbo(character2.name);
+            } else {
+                console.log('Confronto empatado! Nenhum ponto foi perdido!');
+            }   
         }
 
         if (totalTestSkill1 > totalTestSkill2) {
