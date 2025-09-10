@@ -106,7 +106,7 @@ Toda a base do projeto foi desenvolvida de um projeto educacional da Digital Inn
 <b>Condição de vitória:</b>
 
 <input type="checkbox" id="vitoria-item" />
-<label for="vitoria-item">Ao final, vence quem acumulou mais pontos</label><br>
+<label for="vitoria-item">Ao final, vence quem acumulou mais pontos</label><br><br>
 
 <b>Regras extras do confronto:</b>
 
